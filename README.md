@@ -36,7 +36,7 @@ The currently supported instruction set includes:
 - [**ISub()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.isub): Subtract two integers.
 - [**IMul()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.imul): Multiply two integers.
 - [**Pop()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.pop): Pop the top value from the operand stack.
-- [*Dup()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.dup): Duplicate the top value on the operand stack.
+- [**Dup()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.dup): Duplicate the top value on the operand stack.
 - [**Swap()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.swap): Swap the two top elements on the operand stack.
 
 ### Local Control Flow
