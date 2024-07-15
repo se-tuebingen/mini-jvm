@@ -25,7 +25,7 @@ public class VM {
   final Map<Integer, Class> classes;
 
   public VM(Instruction[] main, Map<Integer, Class> classes) {
-    this.frame = new Frame(main, 32, 32);
+    this.frame = new Frame(main, 8, 32);
     this.classes = classes;
     this.callStack = new Stack<>();
     this.heap = new Heap(4096);
@@ -212,5 +212,84 @@ public class VM {
 
       default -> throw new IllegalStateException("Unexpected value: " + instruction);
     }
+  }
+
+
+  public void debug() {
+    int stepCount = 0;
+
+    while (!isDone()) {
+      stepCount++;
+      Debug.printVMState(this, stepCount);
+
+      System.out.println("Press Enter to continue...");
+      try { System.in.read(); } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+      step();
+    }
+  }
+
+  public static void main(String[] args) {
+    Instruction[] instructions = {
+      // L0
+      new IConst(4),
+      new NewArray(),
+
+      new Dup(),
+      new IConst(0),
+      new IConst(13),
+      new IAStore(),
+
+      new Dup(),
+      new IConst(1),
+      new IConst(14),
+      new IAStore(),
+
+      new Dup(),
+      new IConst(2),
+      new IConst(15),
+      new IAStore(),
+
+      new Dup(),
+      new IConst(3),
+      new IConst(16),
+      new IAStore(),
+      new AStore(0),
+
+      // L1
+      new IConst(0),
+      new IStore(1),
+      // L2
+      new IConst(0),
+      new IStore(2),
+      // L3
+      new ALoad(0),
+      new ArrayLength(),
+      new ILoad(2),
+      new ISub(),
+      new IfEq(12), // L4
+      // L5
+      new ILoad(1),
+      new ALoad(0),
+      new ILoad(2),
+      new IALoad(),
+      new IAdd(),
+      new IStore(1),
+      // L6
+      new ILoad(2),
+      new IConst(1),
+      new IAdd(),
+      new IStore(2),
+      new Goto(-15), // L3
+      // L4
+      new Return()
+    };
+
+    // Initialize the VM
+    VM vm = new VM(instructions);
+
+    vm.debug();
   }
 }
