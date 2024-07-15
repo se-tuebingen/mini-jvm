@@ -26,43 +26,45 @@ The VM consists of:
 
 ## Instruction Set
 
-The instruction set includes:
+For a documentation of instructions you can inspect the actual JVM specification ([Some older version here](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5)).
+
+The currently supported instruction set includes:
 
 ### Simple Stack Machine Instructions
-- **IConst(int value)**: Push an int constant onto the operand stack.
-- **IAdd()**: Add two integers.
-- **ISub()**: Subtract two integers.
-- **IMul()**: Multiply two integers.
-- **Pop()**: Pop the top value from the operand stack.
-- **Dup()**: Duplicate the top value on the operand stack.
-- **Swap()**: Swap the two top elements on the operand stack.
+- [**IConst(int value)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.iconst_i): Push an int constant onto the operand stack.
+- [**IAdd()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.iadd): Add two integers.
+- [**ISub()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.isub): Subtract two integers.
+- [**IMul()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.imul): Multiply two integers.
+- [**Pop()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.pop): Pop the top value from the operand stack.
+- [*Dup()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.dup): Duplicate the top value on the operand stack.
+- [**Swap()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.swap): Swap the two top elements on the operand stack.
 
 ### Local Control Flow
-- **IfEq(int offset)**: Branch if int equals zero.
-- **IfNe(int offset)**: Branch if int not equal to zero.
-- **Goto(int offset)**: Unconditional branch.
+- [**IfEq(int offset)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.if_icmp_cond): Branch if int equals zero.
+- [**IfNe(int offset)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.if_icmp_cond): Branch if int not equal to zero.
+- [**Goto(int offset)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.goto): Unconditional branch.
 
 ### Simple Register Machine
-- **ILoad(int index)**: Load an int value from a local variable.
-- **IStore(int index)**: Store an int value into a local variable.
-- **ALoad(int index)**: Load a reference from a local variable.
-- **AStore(int index)**: Store a reference into a local variable.
+- [**ILoad(int index)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.iload): Load an int value from a local variable.
+- [**IStore(int index)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.istore): Store an int value into a local variable.
+- [**ALoad(int index)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.aload): Load a reference from a local variable.
+- [**AStore(int index)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.astore): Store a reference into a local variable.
 
 ### Static Methods
-- **InvokeStatic(Integer classId, String methodName)**: Invoke a static method.
-- **Return()**: Return from a method.
+- [**InvokeStatic(Integer classId, String methodName)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.invokestatic): Invoke a static method.
+- [**Return()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.return): Return from a method.
 
 ### Arrays
-- **NewArray()**: Create a new array of int.
-- **IALoad()**: Load an int from an array.
-- **IAStore()**: Store an int into an array.
-- **ArrayLength()**: Get the length of an array.
+- [**NewArray()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.newarray): Create a new array of int.
+- [**IALoad()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.iaload): Load an int from an array.
+- [**IAStore()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.iastore): Store an int into an array.
+- [**ArrayLength()**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.arraylength): Get the length of an array.
 
 ### Objects
-- **New(Integer classId)**: Create a new object.
-- **InvokeVirtual(String methodName, int numberOfArguments)**: Invoke an instance method.
-- **GetField(String fieldName)**: Fetch field from object.
-- **PutField(String fieldName)**: Set field in object.
+- [**New(Integer classId)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.new): Create a new object.
+- [**InvokeVirtual(String methodName, int numberOfArguments)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.invokevirtual): Invoke an instance method.
+- [**GetField(String fieldName)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.getfield): Fetch field from object.
+- [**PutField(String fieldName)**](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.putfield): Set field in object.
 
 ## Example
 
