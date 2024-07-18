@@ -57,27 +57,27 @@ public class VM {
         frame.next();
       }
       case Swap() -> {
-        var first = frame.popOperand();
         var second = frame.popOperand();
-        frame.pushOperand(first);
+        var first = frame.popOperand();
         frame.pushOperand(second);
+        frame.pushOperand(first);
         frame.next();
       }
       case IAdd() -> {
-        var first = frame.popOperand();
         var second = frame.popOperand();
+        var first = frame.popOperand();
         frame.pushOperand(first + second);
         frame.next();
       }
       case ISub() -> {
-        var first = frame.popOperand();
         var second = frame.popOperand();
+        var first = frame.popOperand();
         frame.pushOperand(second - first);
         frame.next();
       }
       case IMul() -> {
-        var first = frame.popOperand();
         var second = frame.popOperand();
+        var first = frame.popOperand();
         frame.pushOperand(first * second);
         frame.next();
       }
