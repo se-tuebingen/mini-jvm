@@ -229,6 +229,7 @@ public class VM {
 
       step();
     }
+    Debug.printVMState(this, stepCount);
   }
 
   public static void main(String[] args) {
